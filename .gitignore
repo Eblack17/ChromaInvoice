@@ -16,6 +16,7 @@ lib64/
 parts/
 sdist/
 var/
+wheels/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -32,12 +33,14 @@ ENV/
 
 # Application specific
 data/
-.env
 *.log
-
-# OS specific
-.DS_Store
-Thumbs.db
+.env
+.env.local
+.env.*.local
 
 # Docker
-.docker/ 
+.docker/
+
+# System Files
+.DS_Store
+Thumbs.db 
