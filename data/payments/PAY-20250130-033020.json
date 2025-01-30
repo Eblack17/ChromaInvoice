@@ -1,0 +1,7 @@
+{
+  "invoice_id": "INV-20250130-033020",
+  "amount": 1000,
+  "payment_method": "Bank Transfer",
+  "payment_id": "PAY-20250130-033020",
+  "recorded_at": "2025-01-30T03:30:20.286893"
+}

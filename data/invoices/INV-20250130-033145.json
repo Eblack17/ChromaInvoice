@@ -1,0 +1,13 @@
+{
+  "client_name": "TechCorp",
+  "services": [
+    "Maintenance",
+    "Security Audit"
+  ],
+  "amount": 1000,
+  "due_date": "2024-12-16T03:31:45.368326",
+  "invoice_id": "INV-20250130-033145",
+  "created_at": "2025-01-30T03:31:45.372709",
+  "status": "paid",
+  "updated_at": "2025-01-30T03:31:45.389570"
+}

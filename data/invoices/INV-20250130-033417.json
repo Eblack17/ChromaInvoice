@@ -1,0 +1,14 @@
+{
+  "client_name": "Test Client",
+  "client_email": "test@example.com",
+  "services": [
+    "Web Design",
+    "SEO Setup"
+  ],
+  "amount": 2000,
+  "due_date": "2024-12-16T03:34:17.152459",
+  "invoice_id": "INV-20250130-033417",
+  "created_at": "2025-01-30T03:34:17.152459",
+  "status": "overdue",
+  "updated_at": "2025-01-30T03:34:17.607474"
+}

@@ -20,6 +20,11 @@ RUN mkdir -p data/invoices data/clients data/payments data/reports
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
 ENV DATA_DIR=/app/data
+ENV FLASK_APP=app.py
+ENV FLASK_ENV=production
 
-# Run the application
-CMD ["python", "main.py"] 
+# Expose port
+EXPOSE 8000
+
+# Run the application with gunicorn
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app:app"] 

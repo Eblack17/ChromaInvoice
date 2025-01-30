@@ -1,166 +1,86 @@
-# Chromapages Billing System
+# Billing System API
 
-A comprehensive billing system for managing invoices, payments, and financial reporting.
+A Flask-based RESTful API for managing invoices, payments, and generating financial reports.
 
 ## Features
 
-### Core Billing Features
-- Invoice generation and management
-- Payment processing and tracking
-- Automated payment reminders
-- Financial record keeping
+- Invoice Management (Create, Read, Update)
+- Payment Processing
+- Comprehensive Financial Reports
+  - Revenue Reports
+  - Outstanding Invoices
+  - Client Analysis
+  - Service Metrics
+  - Payment Trends
+- Email Notifications
+- Data Persistence
+- Error Handling
 
-### Advanced Reporting
-- Revenue reports with monthly breakdowns
-- Outstanding invoice analysis with aging buckets
-- Client spending analysis and metrics
-- Service usage and revenue metrics
-- Payment trend analysis
-- CSV export capability for all reports
+## Installation
 
-### Email Notifications
-- Invoice notifications to clients
-- Payment reminders (gentle, urgent, and final notices)
-- Payment confirmations
-- Report delivery via email
-- CSV report attachments
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/billing-system.git
+cd billing-system
+```
 
-## Setup
+2. Create a virtual environment and activate it:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
-1. Install dependencies:
+3. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-2. Configure environment variables:
-```bash
-# SMTP Configuration
-SMTP_HOST=smtp.example.com
-SMTP_PORT=587
-SMTP_USERNAME=your_username
-SMTP_PASSWORD=your_password
-FROM_EMAIL=billing@yourcompany.com
-FROM_NAME="Your Company Billing"
-
-# For testing
-TEST_EMAIL=test@example.com
+4. Create a `.env` file with your configuration:
 ```
-
-3. Create data directory:
-```bash
-mkdir -p data/{invoices,clients,payments,reports}
+TEST_EMAIL=your-email@example.com
 ```
 
 ## Usage
 
-### Basic Operations
-
-1. Create an invoice:
-```python
-from database import BillingDatabase
-
-db = BillingDatabase()
-invoice_data = {
-    "client_name": "Client Name",
-    "client_email": "client@example.com",
-    "services": ["Web Design", "SEO Setup"],
-    "amount": 2000,
-    "due_date": "2024-03-01"
-}
-invoice_id = db.create_invoice(invoice_data)
+1. Start the server:
+```bash
+python app.py
 ```
 
-2. Record a payment:
-```python
-payment_data = {
-    "invoice_id": invoice_id,
-    "amount": 2000,
-    "payment_method": "Credit Card"
-}
-payment_id = db.record_payment(payment_data)
-```
+2. The API will be available at `http://localhost:8000`
 
-### Generating Reports
+## API Endpoints
 
-1. Revenue Report:
-```python
-from datetime import datetime, timedelta
-
-start_date = datetime.now() - timedelta(days=30)
-end_date = datetime.now()
-
-report = db.generate_report(
-    "revenue",
-    start_date,
-    end_date,
-    export_format="csv",
-    email_to={
-        "email": "manager@example.com",
-        "name": "Finance Manager"
-    }
-)
-```
-
-2. Client Analysis:
-```python
-report = db.generate_report(
-    "client_analysis",
-    start_date,
-    end_date,
-    export_format="csv"
-)
-```
-
-### Available Report Types
-1. `revenue` - Revenue analysis and trends
-2. `outstanding` - Outstanding invoice analysis
-3. `client_analysis` - Client spending patterns
-4. `service_metrics` - Service popularity and revenue
-5. `payment_trends` - Payment method analysis
+- `GET /` - List available endpoints
+- `POST /invoices` - Create a new invoice
+- `GET /invoices/<invoice_id>` - Get invoice details
+- `PUT /invoices/<invoice_id>/status` - Update invoice status
+- `GET /invoices/overdue` - Get overdue invoices
+- `POST /payments` - Record a payment
+- `POST /reports` - Generate financial reports
 
 ## Testing
 
-Run the test suites:
-
-1. Basic functionality tests:
+Run the test suite:
 ```bash
-python test_billing.py
+python test_api.py
 ```
 
-2. Report generation tests:
+## Production Deployment
+
+For production deployment, use Gunicorn:
 ```bash
-python test_reports.py
+gunicorn -w 4 -b 0.0.0.0:8000 app:app
 ```
 
-3. Email notification tests:
-```bash
-python test_email.py
-```
+## License
 
-## Data Storage
-
-All data is stored in JSON format in the following structure:
-
-```
-data/
-├── invoices/
-│   └── INV-YYYYMMDD-HHMMSS.json
-├── payments/
-│   └── PAY-YYYYMMDD-HHMMSS.json
-├── clients/
-│   └── client_data.json
-└── reports/
-    └── report_type_YYYYMMDD_HHMMSS.csv
-```
+MIT License
 
 ## Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details. 
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request 
