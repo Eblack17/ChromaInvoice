@@ -1,10 +1,12 @@
+# Environment variables
+.env
+
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-env/
 build/
 develop-eggs/
 dist/
@@ -24,6 +26,8 @@ wheels/
 # Virtual Environment
 venv/
 ENV/
+env/
+.venv/
 
 # IDE
 .idea/
@@ -31,16 +35,15 @@ ENV/
 *.swp
 *.swo
 
-# Application specific
-data/
+# Data
+data/*
+!data/.gitkeep
+
+# Logs
 *.log
-.env
-.env.local
-.env.*.local
+.pytest_cache/
+.coverage
+htmlcov/
 
 # Docker
-.docker/
-
-# System Files
-.DS_Store
-Thumbs.db 
+.docker/ 

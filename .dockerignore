@@ -27,6 +27,7 @@ var/
 # Virtual Environment
 venv/
 ENV/
+.venv/
 
 # IDE
 .idea/
@@ -37,4 +38,19 @@ ENV/
 # Application specific
 data/
 .env
-*.log 
+*.log
+
+# Additional files to exclude
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.pytest_cache/
+.python-version
+!data/.gitkeep 
