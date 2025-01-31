@@ -226,33 +226,5 @@ class BillingAgent(BaseAgent):
         )
 
 if __name__ == "__main__":
-    # Create and test the billing agent
-    agent = BillingAgent()
-    
-    # Test cases
-    test_queries = [
-        '''Generate an invoice for client "TechCorp" with the following details:
-        - Service: Web Design
-        - Amount: $2000
-        - Due in 30 days''',
-        
-        'Check the status of invoice INV-20240301-123456',
-        
-        '''Record a payment with these details:
-        - Invoice ID: INV-20240301-123456
-        - Amount: $2000
-        - Payment method: Credit Card''',
-        
-        'Generate a revenue report for this month',
-        
-        'Send a payment reminder for invoice INV-20240301-123456'
-    ]
-    
-    print("Running test queries...")
-    for query in test_queries:
-        print(f"\nQuery: {query}")
-        try:
-            response = agent.run(query)
-            print(f"Response: {response}")
-        except Exception as e:
-            print(f"Error: {str(e)}") 
+    # Create the billing agent
+    agent = BillingAgent() 

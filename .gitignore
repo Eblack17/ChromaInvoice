@@ -35,15 +35,18 @@ env/
 *.swp
 *.swo
 
-# Data
-data/*
-!data/.gitkeep
-
-# Logs
-*.log
-.pytest_cache/
+# Testing
+.tox/
 .coverage
-htmlcov/
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
 
-# Docker
-.docker/ 
+# Application specific
+data/
+*.log
+logs/ 

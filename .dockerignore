@@ -1,46 +1,14 @@
-# Git
 .git
 .gitignore
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
+.env
+__pycache__
+*.pyc
+*.pyo
+*.pyd
 .Python
 env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Virtual Environment
 venv/
-ENV/
 .venv/
-
-# IDE
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# Application specific
-data/
-.env
-*.log
-
-# Additional files to exclude
 pip-log.txt
 pip-delete-this-directory.txt
 .tox/
@@ -53,4 +21,6 @@ coverage.xml
 *.log
 .pytest_cache/
 .python-version
-!data/.gitkeep 
+data/
+README.md
+*.md 
