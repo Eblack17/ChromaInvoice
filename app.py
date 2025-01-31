@@ -253,8 +253,10 @@ if __name__ == '__main__':
             os.makedirs(os.path.join('data', subdir))
     
     # Run the application
+    port = int(os.getenv('PORT', 8080))
     app.run(
         host=os.getenv('FLASK_HOST', '0.0.0.0'),
-        port=int(os.getenv('FLASK_PORT', 5000)),
+        port=port,
         debug=os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
     ) 
+

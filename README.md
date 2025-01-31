@@ -67,7 +67,7 @@ An intelligent agent powered by Google's Gemini Pro model that can understand na
    docker-compose up --build
    ```
 
-The API will be available at `http://localhost:5000`
+The API will be available at `http://localhost:8080`
 
 ### Local Development
 
@@ -96,7 +96,7 @@ The API will be available at `http://localhost:5000`
 
 ### Creating an Invoice
 ```bash
-curl -X POST http://localhost:5000/api/invoices \
+curl -X POST http://localhost:8080/api/invoices \
   -H "Content-Type: application/json" \
   -d '{
     "client_name": "TechCorp",
@@ -108,7 +108,7 @@ curl -X POST http://localhost:5000/api/invoices \
 
 ### Recording a Payment
 ```bash
-curl -X POST http://localhost:5000/api/payments \
+curl -X POST http://localhost:8080/api/payments \
   -H "Content-Type: application/json" \
   -d '{
     "invoice_id": "INV-20240130-123456",
@@ -119,7 +119,7 @@ curl -X POST http://localhost:5000/api/payments \
 
 ### Generating a Report
 ```bash
-curl -X POST http://localhost:5000/api/reports \
+curl -X POST http://localhost:8080/api/reports \
   -H "Content-Type: application/json" \
   -d '{
     "report_type": "revenue",
@@ -137,8 +137,7 @@ Required environment variables in `.env` file:
 FLASK_APP=app.py
 FLASK_ENV=development  # Use 'production' in production
 FLASK_DEBUG=True      # Set to False in production
-FLASK_HOST=0.0.0.0
-FLASK_PORT=5000
+PORT=8080             # Required for Cloud Run compatibility
 
 # Google AI Configuration
 GOOGLE_API_KEY=your_api_key_here
