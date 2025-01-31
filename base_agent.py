@@ -1,8 +1,8 @@
 from typing import List, Optional, Union
 from langchain.agents import AgentExecutor
-from langchain.schema import AgentAction, AgentFinish
+from langchain_core.agents import AgentAction, AgentFinish
 from langchain.memory import ConversationBufferMemory
-from langchain.prompts import MessagesPlaceholder
+from langchain_core.prompts import MessagesPlaceholder
 from langchain_google_genai import ChatGoogleGenerativeAI
 import google.generativeai as genai
 from config import GOOGLE_API_KEY, DEFAULT_MODEL, TEMPERATURE, MAX_TOKENS

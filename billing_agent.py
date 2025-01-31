@@ -1,6 +1,6 @@
 from typing import List, Dict, Any
 from langchain.agents import AgentExecutor, AgentType, initialize_agent
-from langchain.tools import tool
+from langchain_core.tools import tool
 from base_agent import BaseAgent
 from database import BillingDatabase
 from datetime import datetime, timedelta
