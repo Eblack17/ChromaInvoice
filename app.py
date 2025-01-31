@@ -13,7 +13,7 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
-# Initialize database
+# Initialize database lazily
 db = None
 
 def get_db():
@@ -45,6 +45,15 @@ def internal_error(error):
         "message": str(error)
     }), 500
 
+# Health check endpoint - Moved to top priority
+@app.route('/health', methods=['GET'])
+def health_check():
+    """Quick health check endpoint"""
+    return jsonify({
+        "status": "healthy",
+        "timestamp": datetime.now().isoformat()
+    })
+
 # Root endpoint
 @app.route('/', methods=['GET'])
 def root():
@@ -68,14 +77,6 @@ def root():
                 "types": "GET /api/reports/types"
             }
         }
-    })
-
-@app.route('/health', methods=['GET'])
-def health_check():
-    """Health check endpoint"""
-    return jsonify({
-        "status": "healthy",
-        "timestamp": datetime.now().isoformat()
     })
 
 # Invoice endpoints
@@ -255,7 +256,7 @@ if __name__ == '__main__':
     # Run the application
     port = int(os.getenv('PORT', 8080))
     app.run(
-        host=os.getenv('FLASK_HOST', '0.0.0.0'),
+        host='0.0.0.0',  # Always bind to all interfaces
         port=port,
         debug=os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
     ) 
